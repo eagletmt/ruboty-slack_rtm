@@ -45,7 +45,7 @@ module Ruboty
       def create_client(url)
         WebSocket::Client::Simple.connect(url, verify_mode: OpenSSL::SSL::VERIFY_PEER).tap do |client|
           client.on(:error) do |err|
-            Ruboty.logger.error("#{err.class}: #{err.message}\n#{err.backtrace.join("\n")}")
+            Ruboty.logger.error(err)
           end
         end
       end
